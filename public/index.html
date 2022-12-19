@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+
+<html>
+    <head>
+        <title> To-do App </title>
+        <link href = "/styles/styles.css" rel = "stylesheet">
+        <link href = "/images/favicon.png" rel = "icon">
+    </head>
+
+
+    <body>
+        <div class="header">
+            <div class="container">
+                <h1 class="header__title"> My "To-Do" List</h1>
+                <h2 class="header__subtitle"> What do I need to do ? </h2>
+            </div>
+        </div>
+
+        <div class="actions">
+            <div class="actions__container">
+                <input id = "search-text" class = "input" type = "text" placeholder = "Filter todos">
+                <label class = "checkbox">
+                    <input id = "hide-completed" type = "checkbox"> Hide completed
+                </label>
+            </div>
+        </div>
+       
+        <div class="container">
+            <div id = "todos"> </div>
+            <form id = "new-todo"> 
+                <input type = "text" class = "input" placeholder = "Add a to-do" name = "addTodo">
+                <button id = "add-todo" class = "button"> Add </button>
+            </form>
+        </div>
+        
+        <script src = "/scripts/bundle.js"> </script>
+    </body>
+</html>

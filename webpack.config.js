@@ -1,9 +1,9 @@
 const path = require('path')
 
 module.exports = {
-    entry: ['babel-polyfill', './src/index.js'], //This is a path (relative path) to the place where the code lives 
+    entry: ['babel-polyfill', './src/index.js'],
     output: {
-        path: path.resolve(__dirname, 'public/scripts'), //This contains the path (absolute path) to where we want to save the webpack output,
+        path: path.resolve(__dirname, 'public/scripts'),
         filename: 'bundle.js'
     },
     module: {

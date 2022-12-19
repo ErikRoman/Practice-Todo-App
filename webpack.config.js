@@ -1,27 +1,31 @@
-const path = require('path')
+const path = require( 'path' )
+
 
 module.exports = {
-    entry: ['babel-polyfill', './src/index.js'],
+    entry: [ 'babel-polyfill', './src/index.js' ],
+
     output: {
-        path: path.resolve(__dirname, 'public/scripts'),
+        path: path.resolve( __dirname, 'public/scripts' ),
         filename: 'bundle.js'
     },
+
     module: {
-        rules: [{
+        rules: [ {
             test: /\.js$/,
             exclude: /node_modules/,
             use: {
                 loader: 'babel-loader',
                 options: {
-                    presets: ['env'],
-                    plugins: ['transform-object-rest-spread']
+                    presets: [ 'env' ]
                 }
             }
-        }]
+        } ]
     },
+
     devServer: {
         contentBase: path.resolve( __dirname, 'public' ),
-        publicPath: '/scripts/'
+        publicPath: '/scripts/' 
     },
+
     devtool: 'source-map'
 }

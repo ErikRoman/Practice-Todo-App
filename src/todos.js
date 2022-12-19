@@ -25,3 +25,35 @@
 // Return value: none
 
 // Make sure to call loadTodos and setup the exports
+
+import uuidv4 from 'uuid/v4'
+
+let todos = []
+
+
+// Fetch existing todos from local storage
+const loadTodos = () => {
+  const todosJSON = localStorage.getItem( 'todos' )
+
+  try {
+    todos = todosJSON ? JSON.parse( todosJSON ) : []
+  } catch ( e ) {
+    todos = []
+  }
+}
+
+
+// Save the todos to the local storage
+const saveTodos = () => {
+  localStorage.setItem( 'todos', JSON.stringify( todos ) )
+}
+
+
+// Expose todos
+const getTodos = () => todos
+
+const createTodo = ( text ) => {
+  todos.push( {
+    id: uuidv4(),
+  } )
+}

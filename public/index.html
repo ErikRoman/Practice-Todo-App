@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title> Task Tracker </title>
+        <link rel="stylesheet" href="/styles/styles.css">
+        <link rel="icon" href="/images/favicon.png">
+    </head>
+
+    <body>
+        <div>
+            <div>
+                <h1> Task Tracker </h1>
+                <h2> Things I should do </h2>
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <input id = "search-text" type = "text" placeholder = "Filter todos">
+                <label>
+                    <input id = "hide-completed" type = "checkbox"> Hide completed
+                </label>
+            </div>
+        </div>
+
+        <div>
+            <div id = "todos"> </div>
+            <form id = "new-todo">
+                <input type = "text" placeholder = "Add a todo" name = "addTodo">
+                <button id = "add-todo"> Add </button>
+            </form>
+        </div>
+        
+        <script src = "/scripts/bundle.js"> </script>
+    </body>
+</html>

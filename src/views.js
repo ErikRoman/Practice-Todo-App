@@ -2,9 +2,6 @@
 // Arguments: none
 // Return value: none
 
-import { getFilters } from "./filters"
-import { getTodos } from "./todos"
-
 // generateTodoDOM
 // Arguments: todo
 // Return value: the todo element
@@ -14,6 +11,10 @@ import { getTodos } from "./todos"
 // Return value: the summary element
 
 // Make sure to set up the exports
+
+
+import { getFilters } from "./filters"
+import { getTodos, removeTodo, toggleTodo } from "./todos"
 
 
 const renderTodos = () => {
@@ -44,3 +45,51 @@ const renderTodos = () => {
     todoDiv.appendChild( emptyMessage )
   }
 }
+
+
+const generateTodoDOM = ( todo ) => {
+  const todoEl = document.createElement( 'label' )
+  const containerEl = document.createElement( 'div' )
+  const todotext = document.createElement( 'span' )
+  const checkbox = document.createElement( 'input' )
+  const removeButton = document.createElement( 'button' )
+
+  // Set up container
+  todoEl.appendChild( containerEl )
+
+  // Set up todo checkbox
+  checkbox.setAttribute( 'type', 'checkbox' )
+  checkbox.checked = todo.completed
+  containerEl.appendChild( checkbox )
+  checkbox.addEventListener( 'change', () => {
+    toggleTodo( todo.id )
+    renderTodos()
+  } )
+
+  // Set up todo text
+  todotext.textContent = todo.text
+  containerEl.appendChild( todotext )
+
+  // Set up remove button
+  removeButton.textContent = 'Remove'
+  todoEl.appendChild( removeButton )
+  removeButton.addEventListener( 'click', () => {
+    removeTodo( todo.id )
+    renderTodos()
+  } )
+
+  return todoEl
+}
+
+
+const generateSummaryDOM = ( incompletedTodos ) => {
+  const summary = document.createElement( 'h2' )
+  const plural = incompletedTodos.length === 1 ? '' : 's'
+
+  summary.textContent = `You have ${incompletedTodos.length} todo${plural} left !`
+  
+  return summary
+}
+
+
+export { renderTodos, generateTodoDOM, generateSummaryDOM }

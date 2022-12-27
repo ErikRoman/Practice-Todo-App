@@ -26,30 +26,30 @@
 
 // Make sure to call loadTodos and setup the exports
 
-import uuidv4 from 'uuid/v4'
+import uuidv4 from 'uuid/v4'  
 
 let todos = []
 
 
-// Fetch existing todos from local storage
+// Load todos array from local storage
 const loadTodos = () => {
   const todosJSON = localStorage.getItem( 'todos' )
 
   try {
-    todos = todosJSON ? JSON.parse( todosJSON ) : []
+      todos = todosJSON ? JSON.parse( todosJSON ) : []
   } catch ( e ) {
-    todos = []
+      todos = []
   }
 }
 
 
-// Save the todos to the local storage
+// Save todos to the local storage
 const saveTodos = () => {
   localStorage.setItem( 'todos', JSON.stringify( todos ) )
 }
 
 
-// Expose todos
+// Expose todos array
 const getTodos = () => todos
 
 const createTodo = ( text ) => {
@@ -58,12 +58,11 @@ const createTodo = ( text ) => {
     text,
     completed: false
   } )
-
   saveTodos()
 }
 
 
-// Remove a todo
+// Remove a todo from array
 const removeTodo = ( id ) => {
   const todoIndex = todos.findIndex( ( todo ) => todo.id === id )
 
@@ -83,7 +82,6 @@ const toggleTodo = ( id ) => {
     saveTodos()
   }
 }
-
 
 loadTodos()
 

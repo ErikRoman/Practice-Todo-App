@@ -20,11 +20,11 @@ const getFilters = () => filters
 
 
 const setFilters = ( updates ) => {
-  if ( updates.searchText === 'string' ) {
+  if ( typeof updates.searchText === 'string' ) {
     filters.searchText = updates.searchText
   }
 
-  if ( updates.hideCompleted  === 'boolean' ) {
+  if ( typeof updates.hideCompleted  === 'boolean' ) {
     filters.hideCompleted = updates.hideCompleted
   }
 }

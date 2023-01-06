@@ -58,3 +58,6 @@ const generateSummaryDOM = ( incompletedTodos ) => {
 
   return summary
 }
+
+
+// Generate todo DOM

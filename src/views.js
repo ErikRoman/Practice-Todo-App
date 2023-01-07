@@ -2,9 +2,6 @@
 // Arguments: none
 // Return value: none
 
-import { getFilters } from "./filters"
-import { getTodos } from "./todos"
-
 // generateTodoDOM
 // Arguments: todo
 // Return value: the todo element
@@ -14,6 +11,9 @@ import { getTodos } from "./todos"
 // Return value: the summary element
 
 // Make sure to set up the exports
+
+import { getFilters } from "./filters"
+import { getTodos, removeTodo, toggleTodo } from "./todos"
 
 
 // Render todo app
@@ -61,3 +61,38 @@ const generateSummaryDOM = ( incompletedTodos ) => {
 
 
 // Generate todo DOM
+const generateTodoDOM = ( todo ) => {
+  const todoEl = document.createElement( 'label' )
+  const containerEl = document.createElement( 'div' )
+  const todoText = document.createElement( 'span' )
+  const checkbox = document.createElement( 'input' )
+  const removeEl = document.createElement( 'button' )
+
+  // Set up checkbox
+  checkbox.setAttribute( 'type', 'checkbox' )
+  checkbox.checked = todo.completed
+  containerEl.appendChild( checkbox )
+  checkbox.addEventListener( 'change', () => {
+    toggleTodo( todo.id )
+    renderTodos()
+  } )
+
+  // Set up todo text
+  todoText.textContent = todo.text
+  containerEl.appendChild( todoText )
+
+  // Set up container
+  todoEl.appendChild( containerEl )
+
+  // Set up remove button
+  removeEl.textContent = 'Remove'
+  todoEl.appendChild( removeEl )
+  removeEl.addEventListener( 'click', () => {
+    removeTodo( todo.id )
+    renderTodos()
+  } )
+
+  return todoEl
+}
+
+export { renderTodos, generateSummaryDOM, generateTodoDOM }
